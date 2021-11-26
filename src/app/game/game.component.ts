@@ -16,6 +16,20 @@ export class GameComponent implements OnInit {
 
   constructor() { 
     this.types = this.pokemon?.types as Type[];
+
+    if (this.types.length <= 1) {
+      if (this.types.length == 0) {
+        this.types.push({
+          typeid: 20,
+          type: 'None'
+        });
+      }
+      
+      this.types.push({
+        typeid: 20,
+        type: 'None'
+      });
+    }
   }
 
   ngOnInit(): void {
