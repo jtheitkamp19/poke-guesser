@@ -10,6 +10,6 @@ export class HttpService {
     }
 
     getRequestHeaders(): HttpHeaders {
-        return new HttpHeaders().set('Access-Control-Allow-Origin', '*');
+        return new HttpHeaders().set('Access-Control-Allow-Origin', 'https://jtheitkamp19.github.io/');
     }
 }
