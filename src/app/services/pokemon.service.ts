@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Pokemon } from '../models/pokemon.model';
+import { HttpService } from './http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +13,14 @@ export class PokemonService {
   POKEMON_URL = 'pokemon/';
   NAME_URL = this.POKEMON_URL + 'name/';
 
-  constructor(readonly http: HttpClient) { }
+  constructor(readonly http: HttpClient, readonly httpheaders: HttpService) { }
 
   fetchPokemonById(id: number): Observable<Pokemon> {
-    return this.http.get<Pokemon>(environment.databaseURL + this.POKEMON_URL + id);
+    return this.http.get<Pokemon>(environment.databaseURL + this.POKEMON_URL + id, {headers: this.httpheaders.getRequestHeaders()});
   }
 
   fetchPokemonByName(name: string): Observable<Pokemon[]> {
-    return this.http.get<Pokemon[]>(environment.databaseURL + this.NAME_URL + name);
+    return this.http.get<Pokemon[]>(environment.databaseURL + this.NAME_URL + name, {headers: this.httpheaders.getRequestHeaders()});
   }
 
   getIdInSelectedGenerations(selectedGenerations: boolean[]): number {
