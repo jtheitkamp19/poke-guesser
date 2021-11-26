@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  databaseURL: 'https://pokemon-services.herokuapp.com/api/v1/'
 };
