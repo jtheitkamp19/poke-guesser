@@ -15,6 +15,10 @@ export class GameComponent implements OnInit {
   types: Type[] = [];
 
   constructor() { 
+    console.log(this.pokemon);
+  }
+
+  ngOnInit(): void {
     this.types = this.pokemon?.types as Type[];
 
     if (this.types.length <= 1) {
@@ -30,9 +34,6 @@ export class GameComponent implements OnInit {
         type: 'None'
       });
     }
-  }
-
-  ngOnInit(): void {
   }
 
 }
