@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Pokemon } from '../models/pokemon.model';
+import { Type } from '../models/type.model';
 
 @Component({
   selector: 'app-game',
@@ -9,8 +10,13 @@ import { Pokemon } from '../models/pokemon.model';
 export class GameComponent implements OnInit {
   @Input() pokemon: Pokemon | null = null;
   @Input() selectedGenerations: boolean[] = [false, false, false, false, false, false, false, false];
+  familyData = [1, 2, 3];
+  searchValue = "";
+  types: Type[] = [];
 
-  constructor() { }
+  constructor() { 
+    this.types = this.pokemon?.types as Type[];
+  }
 
   ngOnInit(): void {
   }

@@ -1,26 +1,28 @@
 <h1>Guess That Pokemon!</h1>
 <body>
-  <input type="checkbox" id="gen1" [(ngModel)]="isGen1Selected"/>
-  <label for="gen1">Generation 1</label>
-  <input type="checkbox" id="gen2" [(ngModel)]="isGen2Selected"/>
-  <label for="gen1">Generation 2</label>
-  <br>
-  <input type="checkbox" id="gen3" [(ngModel)]="isGen3Selected"/>
-  <label for="gen1">Generation 3</label>
-  <input type="checkbox" id="gen4" [(ngModel)]="isGen4Selected"/>
-  <label for="gen1">Generation 4</label>
-  <br>
-  <input type="checkbox" id="gen5" [(ngModel)]="isGen5Selected"/>
-  <label for="gen1">Generation 5</label>
-  <input type="checkbox" id="gen6" [(ngModel)]="isGen6Selected"/>
-  <label for="gen1">Generation 6</label>
-  <br>
-  <input type="checkbox" id="gen7" [(ngModel)]="isGen7Selected"/>
-  <label for="gen1">Generation 7</label>
-  <input type="checkbox" id="gen8" [(ngModel)]="isGen8Selected"/>
-  <label for="gen1">Generation 8</label>
-  <br>
-  <button (click)="startGame()">Start Game</button>
+  <div id="game_selection" *ngIf="showSelection">
+    <input type="checkbox" id="gen1" [(ngModel)]="isGen1Selected"/>
+    <label for="gen1">Generation 1</label>
+    <input type="checkbox" id="gen2" [(ngModel)]="isGen2Selected"/>
+    <label for="gen1">Generation 2</label>
+    <br>
+    <input type="checkbox" id="gen3" [(ngModel)]="isGen3Selected"/>
+    <label for="gen1">Generation 3</label>
+    <input type="checkbox" id="gen4" [(ngModel)]="isGen4Selected"/>
+    <label for="gen1">Generation 4</label>
+    <br>
+    <input type="checkbox" id="gen5" [(ngModel)]="isGen5Selected"/>
+    <label for="gen1">Generation 5</label>
+    <input type="checkbox" id="gen6" [(ngModel)]="isGen6Selected"/>
+    <label for="gen1">Generation 6</label>
+    <br>
+    <input type="checkbox" id="gen7" [(ngModel)]="isGen7Selected"/>
+    <label for="gen1">Generation 7</label>
+    <input type="checkbox" id="gen8" [(ngModel)]="isGen8Selected"/>
+    <label for="gen1">Generation 8</label>
+    <br>
+    <button (click)="startGame()">Start Game</button>
+  </div>
 
-  <app-game *ngIf="pokemon" [pokemon]="pokemon"></app-game>
+  <app-game *ngIf="!showSelection" [pokemon]="pokemon"></app-game>
 </body>

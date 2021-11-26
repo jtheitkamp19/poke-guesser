@@ -12,6 +12,7 @@ import * as _ from 'underscore';
 export class AppComponent {
   title = 'poke-guesser';
   pokemon: Pokemon;
+  showSelection: boolean = true;
   selectedGenerations: boolean[] = [false, false, false, false, false, false, false, false];
   isGen1Selected: boolean;
   isGen2Selected: boolean;
@@ -28,6 +29,7 @@ export class AppComponent {
 
   startGame() {
     console.log("Starting Game");
+    this.showSelection = false;
 
     this.selectedGenerations = [
       this.isGen1Selected,
@@ -54,6 +56,8 @@ export class AppComponent {
     } else {
       console.log("No Generation Selected");
       alert("No Generation Selected");
+
+      this.showSelection = true;
     }
   }
 }

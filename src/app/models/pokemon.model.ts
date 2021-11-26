@@ -15,5 +15,5 @@ export interface Pokemon {
     familyid: number,
     evonum: number,
     color: string,
-    types: Type
+    types: Type[]
 }
