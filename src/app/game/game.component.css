@@ -21,6 +21,7 @@
 
 #poke_name_entry {
     position: fixed;
+    left: 0;
     bottom: 0;
     width: 100%;
 }
