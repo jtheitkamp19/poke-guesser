@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Pokemon } from '../models/pokemon.model';
 import { HttpService } from './http.service';
+import { MathService } from './math.service';
+import * as _ from 'underscore';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +14,9 @@ export class PokemonService {
   GENERATION_CUTOFFS = [1, 152, 252, 387, 494, 650, 722, 808, 892];
   POKEMON_URL = 'pokemon/';
   NAME_URL = this.POKEMON_URL + 'name/';
+  FAMILY_URL = this.POKEMON_URL + 'family/';
 
-  constructor(readonly http: HttpClient, readonly httpheaders: HttpService) { }
+  constructor(readonly http: HttpClient, readonly httpheaders: HttpService, readonly math: MathService) { }
 
   fetchPokemonById(id: number): Observable<Pokemon> {
     return this.http.get<Pokemon>(environment.databaseURL + this.POKEMON_URL + id, {headers: this.httpheaders.getRequestHeaders()});
@@ -23,27 +26,24 @@ export class PokemonService {
     return this.http.get<Pokemon[]>(environment.databaseURL + this.NAME_URL + name, {headers: this.httpheaders.getRequestHeaders()});
   }
 
+  fetchFamilyForPokemonWithId(id: number): Observable<Pokemon[]> {
+    return this.http.get<Pokemon[]>(environment.databaseURL + this.FAMILY_URL + id, {headers: this.httpheaders.getRequestHeaders()});
+  }
+
   getIdInSelectedGenerations(selectedGenerations: boolean[]): number {
-    var potentialId = this.getRandomPokemonId();
+    var validRanges = [];
 
-    if (!this.validatePokemonId(selectedGenerations, potentialId)) {
-      potentialId = this.getRandomPokemonId();
-    }
-
-    return potentialId;
-  }
-
-  getRandomPokemonId() {
-    return Math.floor(Math.random() * (this.GENERATION_CUTOFFS[this.GENERATION_CUTOFFS.length - 1] - 1) + 1);
-  }
-
-  validatePokemonId(selectedGenerations: boolean[], id: number): boolean {
     for (var i = 0; i < selectedGenerations.length; i++) {
-      console.log(`id: ${id}; generationCutoff: ${this.GENERATION_CUTOFFS[i]}; uppderGenCutoff: ${this.GENERATION_CUTOFFS[i+1]}`);
-      console.log(`returning: ${selectedGenerations[i] && id >= this.GENERATION_CUTOFFS[i] && id < this.GENERATION_CUTOFFS[i + 1]}`)
-      return selectedGenerations[i] && id >= this.GENERATION_CUTOFFS[i] && id < this.GENERATION_CUTOFFS[i + 1]
+      if (selectedGenerations[i]) {
+        validRanges.push([this.GENERATION_CUTOFFS[i], this.GENERATION_CUTOFFS[i + 1]]);
+      }
     }
 
-    return false;
+    if (validRanges.length > 0) {
+      var selectedRange = this.math.getRandomNumberBetween(0, validRanges.length);
+      return this.math.getRandomNumberBetween(validRanges[selectedRange][0], validRanges[selectedRange][1]);
+    }
+
+    return 0;
   }
 }

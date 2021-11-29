@@ -24,5 +24,5 @@
     <button (click)="startGame()">Start Game</button>
   </div>
 
-  <app-game *ngIf="pokemon" [pokemon]="pokemon"></app-game>
+  <app-game *ngIf="pokemonData" [pokemonData]="pokemonData" [pokemonId]="pokemonId" [selectedGenerations]="selectedGenerations"></app-game>
 </body>

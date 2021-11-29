@@ -11,7 +11,7 @@
 </div>
 <div id="family_size" class="row">
     <div id="family_info_section" class="column">
-        <label class="poke-data">Family Members: {{ familyData?.length }}</label>
+        <label class="poke-data">Family Members: {{ pokemonData?.length }}</label>
         <label class="poke-data">Evolution Number: {{ pokemon?.evonum }}</label>
     </div>
     <div id="size_section" class="column">
@@ -23,7 +23,7 @@
     <div id="family_section" class="column">
         <label class="poke-data">Family Members:</label>
         <br>
-        <ul *ngFor="let familyMember in familyData"></ul>
+        <ul *ngFor="let familyMember in pokemonData"></ul>
     </div>
     <div id="stat_section" class="column">
         <label class="poke-data">Hp: {{ pokemon?.hp }}</label>

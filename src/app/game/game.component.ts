@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import * as _ from 'underscore';
 import { Pokemon } from '../models/pokemon.model';
 import { Type } from '../models/type.model';
 
@@ -8,17 +9,22 @@ import { Type } from '../models/type.model';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
-  @Input() pokemon: Pokemon | null = null;
+  @Input() pokemonData: Pokemon[] = [];
   @Input() selectedGenerations: boolean[] = [false, false, false, false, false, false, false, false];
-  familyData = [1, 2, 3];
+  @Input() pokemonId: number = 0;
   searchValue = "";
   types: Type[] = [];
+  pokemon: Pokemon | undefined;
 
   constructor() { 
-    console.log(this.pokemon);
+    
   }
 
   ngOnInit(): void {
+    this.pokemon = _.find(this.pokemonData, pokemonInList => {
+      return pokemonInList.number == this.pokemonId;
+    });
+
     this.types = this.pokemon?.types as Type[];
 
     if (this.types.length <= 1) {

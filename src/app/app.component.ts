@@ -11,7 +11,8 @@ import * as _ from 'underscore';
 })
 export class AppComponent {
   title = 'poke-guesser';
-  pokemon: Pokemon;
+  pokemonData: Pokemon[];
+  pokemonId: number;
   showSelection: boolean = true;
   selectedGenerations: boolean[] = [false, false, false, false, false, false, false, false];
   isGen1Selected: boolean;
@@ -47,11 +48,11 @@ export class AppComponent {
     });
 
     if (isAnyGenerationSelected) {
-      var pokeId = this.pokeService.getIdInSelectedGenerations(this.selectedGenerations);
+      this.pokemonId = this.pokeService.getIdInSelectedGenerations(this.selectedGenerations);
 
-      this.pokeService.fetchPokemonById(pokeId).subscribe(data => {
+      this.pokeService.fetchFamilyForPokemonWithId(this.pokemonId).subscribe(data => {
         console.log(data);
-        this.pokemon = data;
+        this.pokemonData = data;
       })
     } else {
       console.log("No Generation Selected");
