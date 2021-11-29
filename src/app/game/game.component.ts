@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import * as _ from 'underscore';
 import { keys } from 'underscore';
 import { EMPTY_POKEMON } from '../models/empty-pokemon';
@@ -15,13 +15,14 @@ export class GameComponent implements OnInit {
   @Input() pokemonData: Pokemon[] = [];
   @Input() selectedGenerations: boolean[] = [false, false, false, false, false, false, false, false];
   @Input() pokemonId: number = 0;
+  @ViewChild("poke_name_entry") searchBox: ElementRef;
   searchValue = "";
   types: Type[] = [];
   currentPokemon: Pokemon | undefined;
   pokemon: Pokemon = EMPTY_POKEMON;
   gameWon = false;
   guesses: string[] = [];
-  lengthKnown = false;
+  lengthKnown = true;
   type1Known = false;
   type2Known = false;
   isSearchInProgress = false;
@@ -65,6 +66,7 @@ export class GameComponent implements OnInit {
           this.checkSearchPokemonVsCurrentPokemon(pokemonInList);
           this.isSearchInProgress = false;
           this.searchValue = '';
+          this.searchBox.nativeElement.focus();
         });
       })
     } else {
