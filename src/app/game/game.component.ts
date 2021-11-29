@@ -15,6 +15,8 @@ export class GameComponent implements OnInit {
   searchValue = "";
   types: Type[] = [];
   pokemon: Pokemon | undefined;
+  gameWon = false;
+  guesses = [];
 
   constructor() { 
     

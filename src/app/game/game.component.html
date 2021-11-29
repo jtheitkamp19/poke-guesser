@@ -4,33 +4,71 @@
         <img src="" class="image-view">
     </div>
     <div id="poke_header_section" class="column">
-        <label class="poke-data">Name: {{ pokemon?.name }}</label>
-        <label class="poke-data">Color: {{ pokemon?.color }}</label>
-        <label class="poke-data">Type: {{ types[0] }} {{ types[1] }}</label>
+        <label for="info_name" class="poke-data-header">Name: </label>
+        <label id="info_name" class="poke-data">{{ pokemon?.name }}</label>
+        <label for="info_color" class="poke-data-header">Color: </label>
+        <label id="info_color" class="poke-data">{{ pokemon?.color }}</label>
+        <label for="info_types" class="poke-data-header">Type: </label>
+        <label id="info_types" class="poke-data">{{ types[0].type }} {{ types[1].type }}</label>
     </div>
 </div>
 <div id="family_size" class="row">
     <div id="family_info_section" class="column">
-        <label class="poke-data">Family Members: {{ pokemonData?.length }}</label>
-        <label class="poke-data">Evolution Number: {{ pokemon?.evonum }}</label>
+        <label for="info_family_size" class="poke-data-header">Family Count: </label>
+        <label id="info_family_size" class="poke-data">{{ pokemonData?.length }}</label>
+        <label for="info_evo_number" class="poke-data-header">Evolution Number: </label>
+        <label id="info_evo_number" class="poke-data">{{ pokemon?.evonum }}</label>
     </div>
     <div id="size_section" class="column">
-        <label class="poke-data">Height: {{ pokemon?.height }}</label>
-        <label class="poke-data">Weight: {{ pokemon?.weight }}</label>
+        <label for="info_height" class="poke-data-header">Height: </label>
+        <label id="info_height" class="poke-data">{{ pokemon?.height }}</label>
+        <label for="info_weight" class="poke-data-header">Weight: </label>
+        <label id="info_weight" class="poke-data">{{ pokemon?.weight }}</label>
     </div>
 </div>
 <div id="family_stat" class="row">
-    <div id="family_section" class="column">
-        <label class="poke-data">Family Members:</label>
+    <div id="family_section" *ngIf="gameWon">
+        <label class="poke-data-header">Family Members:</label>
         <br>
-        <ul *ngFor="let familyMember in pokemonData"></ul>
+        <ul>
+            <li *ngFor="let familyMember of pokemonData">{{ familyMember.name }}</li>
+        </ul>
     </div>
-    <div id="stat_section" class="column">
-        <label class="poke-data">Hp: {{ pokemon?.hp }}</label>
-        <label class="poke-data">Attack: {{ pokemon?.attack }}</label>
-        <label class="poke-data">Defense: {{ pokemon?.defense }}</label>
-        <label class="poke-data">Sp. Atk: {{ pokemon?.spatk }}</label>
-        <label class="poke-data">Sp. Def: {{ pokemon?.spdef }}</label>
-        <label class="poke-data">Speed: {{ pokemon?.speed }}</label>
+    <div id="guess_section" *ngIf="!gameWon">
+        <label class="poke-data-header">Guesses:</label>
+        <br>
+        <ul>
+            <li *ngFor="let guess of guesses">{{ guess }}</li>
+        </ul>
+    </div>
+    <div id="stat_section">
+        <label class="poke-data-header">Stats:</label>
+        <br>
+        <ul>
+            <li>
+                <label id="info_hp" class="poke-data">{{ pokemon?.hp }}</label>
+                <label for="info_hp" class="poke-data-header"> :Hp</label>
+            </li>
+            <li>
+                <label id="info_attack" class="poke-data">{{ pokemon?.attack }}</label>
+                <label for="info_attack" class="poke-data-header"> :Attack</label>
+            </li>
+            <li>
+                <label id="info_defense" class="poke-data">{{ pokemon?.defense }}</label>
+                <label for="info_defense" class="poke-data-header"> :Defense</label>
+            </li>
+            <li>
+                <label id="info_spatk" class="poke-data">{{ pokemon?.spatk }}</label>
+                <label for="info_spatk" class="poke-data-header"> :Sp. Atk</label>
+            </li>
+            <li>
+                <label id="info_spdef" class="poke-data">{{ pokemon?.spdef }}</label>
+                <label for="info_spdef" class="poke-data-header"> :Sp. Def</label>
+            </li>
+            <li>
+                <label id="info_speed" class="poke-data">{{ pokemon?.speed }}</label>
+                <label for="info_speed" class="poke-data-header"> :Speed</label>
+            </li>
+        </ul>
     </div>
 </div>

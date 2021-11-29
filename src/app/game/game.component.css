@@ -1,0 +1,20 @@
+#family_section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+}
+
+#guess_section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+}
+
+#stat_section {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+}
