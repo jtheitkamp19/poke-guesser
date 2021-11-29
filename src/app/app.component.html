@@ -1,4 +1,4 @@
-<h1>Guess That Pokemon!</h1>
+<h1 *ngIf="!pokemonData">Guess That Pokemon!</h1>
 <body>
   <div id="game_selection" *ngIf="showSelection">
     <input type="checkbox" id="gen1" [(ngModel)]="isGen1Selected"/>

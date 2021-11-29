@@ -1,8 +1,4 @@
-<input id="poke_name_entry" class="text-input" [(ngModel)]="searchValue">
 <div id="poke_header" class="row">
-    <div id="image_section" class="column">
-        <img src="" class="image-view">
-    </div>
     <div id="poke_header_section" class="column">
         <label for="info_name" class="poke-data-header">Name: </label>
         <label id="info_name" class="poke-data">{{ pokemon?.name }}</label>
@@ -71,3 +67,4 @@
         </ul>
     </div>
 </div>
+<input id="poke_name_entry" class="text-input" [(ngModel)]="searchValue">
