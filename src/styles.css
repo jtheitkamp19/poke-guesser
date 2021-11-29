@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    background-color: black;
+}
+
 div {
     border: 1px solid red;
     position: relative;
@@ -11,14 +15,17 @@ div {
 }
 
 .column {
-    width: 50%;
+    width: 100%;
 }
 
 .poke-data {
     width: auto;
+    color: white;
 }
 
 .poke-data-header {
     width: min-content;
     margin-left: 5%;
+    font-weight: bolder;
+    color: goldenrod;
 }

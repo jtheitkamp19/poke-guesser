@@ -29,21 +29,18 @@
 <div id="family_stat" class="row">
     <div id="family_section" *ngIf="gameWon">
         <label class="poke-data-header">Family Members:</label>
-        <br>
         <ul>
             <li *ngFor="let familyMember of pokemonData">{{ familyMember.name }}</li>
         </ul>
     </div>
     <div id="guess_section" *ngIf="!gameWon">
         <label class="poke-data-header">Guesses:</label>
-        <br>
         <ul>
             <li *ngFor="let guess of guesses">{{ guess }}</li>
         </ul>
     </div>
     <div id="stat_section">
         <label class="poke-data-header">Stats:</label>
-        <br>
         <ul>
             <li>
                 <label id="info_hp" class="poke-data">{{ pokemon?.hp }}</label>
