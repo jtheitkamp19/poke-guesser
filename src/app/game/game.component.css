@@ -30,12 +30,12 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 90%;
+    width: 65%;
 }
 
 #search_button {
     position: absolute;
     bottom: 0;
-    left: 90%;
-    width: 10%;
+    left: 65%;
+    width: 35%;
 }

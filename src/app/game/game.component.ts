@@ -64,6 +64,7 @@ export class GameComponent implements OnInit {
           this.guesses.push(pokemonInList.name);
           this.checkSearchPokemonVsCurrentPokemon(pokemonInList);
           this.isSearchInProgress = false;
+          this.searchValue = '';
         });
       })
     } else {
@@ -84,52 +85,52 @@ export class GameComponent implements OnInit {
         this.pokemon.name = this.currentPokemon.name;
       }
   
-      if (searchResult.generation == this.currentPokemon.generation|| this.gameWon) {
+      if (searchResult.generation == this.currentPokemon.generation || this.gameWon) {
         this.pokemon.generation = this.currentPokemon.generation;
       }
   
-      if (Math.abs(searchResult.height - this.currentPokemon.height) <= .5|| this.gameWon) {
+      if (Math.abs(searchResult.height - this.currentPokemon.height) <= .5 || this.gameWon) {
         this.pokemon.height = this.currentPokemon.height;
       }
 
-      if (Math.abs(searchResult.weight - this.currentPokemon.weight) <= 1|| this.gameWon) {
+      if (Math.abs(searchResult.weight - this.currentPokemon.weight) <= 1 || this.gameWon) {
         this.pokemon.weight = this.currentPokemon.weight;
       }
 
-      if (searchResult.hp == this.currentPokemon.hp|| this.gameWon) {
+      if (searchResult.hp == this.currentPokemon.hp || this.gameWon) {
         this.pokemon.hp = this.currentPokemon.hp;
       }
 
-      if (searchResult.attack == this.currentPokemon.attack|| this.gameWon) {
+      if (searchResult.attack == this.currentPokemon.attack || this.gameWon) {
         this.pokemon.attack = this.currentPokemon.attack;
       }
 
-      if (searchResult.defense == this.currentPokemon.defense|| this.gameWon) {
+      if (searchResult.defense == this.currentPokemon.defense || this.gameWon) {
         this.pokemon.defense = this.currentPokemon.defense;
       }
 
-      if (searchResult.spatk == this.currentPokemon.spatk|| this.gameWon) {
+      if (searchResult.spatk == this.currentPokemon.spatk || this.gameWon) {
         this.pokemon.spatk = this.currentPokemon.spatk;
       }
 
-      if (searchResult.spdef == this.currentPokemon.spdef|| this.gameWon) {
+      if (searchResult.spdef == this.currentPokemon.spdef || this.gameWon) {
         this.pokemon.spdef = this.currentPokemon.spdef;
       }
 
-      if (searchResult.speed == this.currentPokemon.speed|| this.gameWon) {
+      if (searchResult.speed == this.currentPokemon.speed || this.gameWon) {
         this.pokemon.speed = this.currentPokemon.speed;
       }
 
-      if (searchResult.familyid == this.currentPokemon.familyid|| this.gameWon) {
+      if (searchResult.familyid == this.currentPokemon.familyid || this.gameWon) {
         this.lengthKnown = true;
         this.pokemon.familyid = this.currentPokemon.familyid;
       }
 
-      if (searchResult.evonum == this.currentPokemon.evonum|| this.gameWon) {
+      if (searchResult.evonum == this.currentPokemon.evonum || this.gameWon) {
         this.pokemon.evonum = this.currentPokemon.evonum;
       }
 
-      if (searchResult.color == this.currentPokemon.color|| this.gameWon) {
+      if (searchResult.color == this.currentPokemon.color || this.gameWon) {
         this.pokemon.color = this.currentPokemon.color;
       }
 
@@ -147,12 +148,16 @@ export class GameComponent implements OnInit {
               } else {
                 this.type2Known = true;
               }
+
+              this.types = this.pokemon.types;
             }
           }
         }
       } else {
         this.pokemon.types = this.currentPokemon.types;
         this.types = this.pokemon.types;
+        this.type1Known = true;
+        this.type2Known = true;
         this.wonGame();
       }
     }
