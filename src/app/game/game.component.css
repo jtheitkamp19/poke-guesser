@@ -19,9 +19,23 @@
     width: 50%;
 }
 
-#poke_name_entry {
+#guess_bar {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
+}
+
+#poke_name_entry {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 90%;
+}
+
+#search_button {
+    position: absolute;
+    bottom: 0;
+    left: 90%;
+    width: 10%;
 }

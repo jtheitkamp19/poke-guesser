@@ -14,6 +14,7 @@ export class PokemonService {
   GENERATION_CUTOFFS = [1, 152, 252, 387, 494, 650, 722, 808, 892];
   POKEMON_URL = 'pokemon/';
   NAME_URL = this.POKEMON_URL + 'name/';
+  NAME_MATCH_URL = this.NAME_URL + 'full/';
   FAMILY_URL = this.POKEMON_URL + 'family/';
 
   constructor(readonly http: HttpClient, readonly httpheaders: HttpService, readonly math: MathService) { }
@@ -24,6 +25,10 @@ export class PokemonService {
 
   fetchPokemonByName(name: string): Observable<Pokemon[]> {
     return this.http.get<Pokemon[]>(environment.databaseURL + this.NAME_URL + name, {headers: this.httpheaders.getRequestHeaders()});
+  }
+
+  fetchPokemonByNameMatching(name: string): Observable<Pokemon[]> {
+    return this.http.get<Pokemon[]>(environment.databaseURL + this.NAME_MATCH_URL + name, {headers: this.httpheaders.getRequestHeaders()});
   }
 
   fetchFamilyForPokemonWithId(id: number): Observable<Pokemon[]> {

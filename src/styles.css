@@ -5,7 +5,7 @@ body {
 }
 
 div {
-    border: 1px solid red;
+    border: 1px solid #222;
     position: relative;
 }
 

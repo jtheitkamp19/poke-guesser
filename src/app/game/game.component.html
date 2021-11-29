@@ -7,21 +7,22 @@
     </div>
     <div id="poke_type_section" class="column">
         <label for="info_types" class="poke-data-header">Type: </label>
-        <label id="info_types" class="poke-data">{{ types[0].type }} {{ types[1].type }}</label>
+        <label id="info_types_1" class="poke-data" *ngIf="type1Known">{{ types[0].type }} </label>
+        <label id="info_types_2" class="poke-data" *ngIf="type2Known">{{ types[1].type }}</label>
     </div>
 </div>
 <div id="family_size" class="row">
     <div id="family_info_section" class="column">
         <label for="info_family_size" class="poke-data-header">Family Count: </label>
-        <label id="info_family_size" class="poke-data">{{ pokemonData?.length }}</label>
+        <label id="info_family_size" class="poke-data" *ngIf="lengthKnown">{{ pokemonData?.length }}</label>
         <label for="info_evo_number" class="poke-data-header">Evolution Number: </label>
-        <label id="info_evo_number" class="poke-data">{{ pokemon?.evonum }}</label>
+        <label id="info_evo_number" class="poke-data">{{ pokemon?.evonum | dataHider }}</label>
     </div>
     <div id="size_section" class="column">
         <label for="info_height" class="poke-data-header">Height: </label>
-        <label id="info_height" class="poke-data">{{ pokemon?.height }}</label>
+        <label id="info_height" class="poke-data">{{ pokemon?.height | dataHider }}</label>
         <label for="info_weight" class="poke-data-header">Weight: </label>
-        <label id="info_weight" class="poke-data">{{ pokemon?.weight }}</label>
+        <label id="info_weight" class="poke-data">{{ pokemon?.weight | dataHider }}</label>
     </div>
 </div>
 <div id="family_stat" class="row">
@@ -41,30 +42,33 @@
         <label class="poke-data-header">Stats:</label>
         <ul>
             <li>
-                <label id="info_hp" class="poke-data">{{ pokemon?.hp }}</label>
+                <label id="info_hp" class="poke-data">{{ pokemon?.hp | dataHider }}</label>
                 <label for="info_hp" class="poke-data-header"> :Hp</label>
             </li>
             <li>
-                <label id="info_attack" class="poke-data">{{ pokemon?.attack }}</label>
+                <label id="info_attack" class="poke-data">{{ pokemon?.attack | dataHider }}</label>
                 <label for="info_attack" class="poke-data-header"> :Attack</label>
             </li>
             <li>
-                <label id="info_defense" class="poke-data">{{ pokemon?.defense }}</label>
+                <label id="info_defense" class="poke-data">{{ pokemon?.defense | dataHider }}</label>
                 <label for="info_defense" class="poke-data-header"> :Defense</label>
             </li>
             <li>
-                <label id="info_spatk" class="poke-data">{{ pokemon?.spatk }}</label>
+                <label id="info_spatk" class="poke-data">{{ pokemon?.spatk | dataHider }}</label>
                 <label for="info_spatk" class="poke-data-header"> :Sp. Atk</label>
             </li>
             <li>
-                <label id="info_spdef" class="poke-data">{{ pokemon?.spdef }}</label>
+                <label id="info_spdef" class="poke-data">{{ pokemon?.spdef | dataHider }}</label>
                 <label for="info_spdef" class="poke-data-header"> :Sp. Def</label>
             </li>
             <li>
-                <label id="info_speed" class="poke-data">{{ pokemon?.speed }}</label>
+                <label id="info_speed" class="poke-data">{{ pokemon?.speed | dataHider }}</label>
                 <label for="info_speed" class="poke-data-header"> :Speed</label>
             </li>
         </ul>
     </div>
 </div>
-<input id="poke_name_entry" class="text-input" [(ngModel)]="searchValue">
+<div id="guess_bar">
+    <input id="poke_name_entry" class="text-input" [(ngModel)]="searchValue">
+    <button id="search_button" class="button" (click)="search()">Search...</button>
+</div>
